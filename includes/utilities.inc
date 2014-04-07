@@ -184,7 +184,8 @@ function islandora_newspaper_get_date_issued_from_mods(AbstractDatastream $datas
       watchdog_exception('islandora_newspaper', $e, $msg, $vars, WATCHDOG_ERROR);
     }
   }
-  file_unmanaged_delete($file);
+  $uploaded_name = drupal_basename($file);
+  islandora_temp_file_entry($uploaded_name, $file);
   return $out;
 }
 
